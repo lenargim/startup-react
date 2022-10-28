@@ -1,0 +1,31 @@
+@import "../../../assets/commonStyles/general"
+.title
+  flex: 0 0 50%
+  font: 400 48px/65px $mainFont
+  @include between(1024, 1366)
+    flex: 0 0 calc(66.6% - 10px)
+  @include max(767)
+    font: 500 32px/44px $mainFont
+.wrap
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 30px
+  padding-bottom: 87px
+  @include between(1024, 1366)
+    gap: 40px
+  @include max(1023)
+    flex-direction: column
+    justify-content: flex-start
+    align-items: flex-start
+    gap: 36px
+    padding-bottom: 80px
+  @include max(767)
+    padding-bottom: 40px
+.desc
+  flex: 0 0 calc(33.3% - 30px)
+  color: #4A4A4A
+  font: 400 16px/24px $mainFont
+  @include between(768, 1024)
+    flex: unset
+    max-width: calc(5 / 6 * 100%)

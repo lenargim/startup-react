@@ -1,0 +1,31 @@
+@import "./../../../assets/commonStyles/general"
+
+.sidebar
+  width: 275px
+  margin-left: auto
+  @include between(1024, 1366)
+    width: 200px
+  @include max(1023)
+    display: none
+  h3
+    padding: 40px 0
+    @include between(1024, 1366)
+      padding: 22px 0 40px
+  &Desc
+    color: #4A4A4A
+  &List
+    display: flex
+    align-items: flex-start
+    flex-direction: column
+    gap: 32px
+  &Item
+    position: relative
+    color: #4A4A4A
+    &:before
+      content: ''
+      position: absolute
+      width: 12px
+      height: 12px
+      background: $blue
+      top: 6px
+      right: calc(100% + 20px)

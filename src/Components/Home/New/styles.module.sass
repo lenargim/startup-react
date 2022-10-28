@@ -1,0 +1,33 @@
+@import "../../../assets/commonStyles/general"
+
+.new
+  margin-top: 45px
+  @include between(768, 1024)
+    margin-top: 55px
+
+  h2
+    flex: 0 0 66.6%
+    @include between(768, 1024)
+      flex: 0 0 calc(50% - 30px)
+    @include max(767)
+      flex: 0 0 100%
+
+  a
+    color: $blue
+    font: 400 16px/24px $mainFont
+
+.title
+  display: flex
+  align-items: center
+  @include between(768, 1024)
+    justify-content: space-between
+  @include max(767)
+    flex-wrap: wrap
+    gap: 50px 30px
+    justify-content: space-between
+
+.right
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 33%

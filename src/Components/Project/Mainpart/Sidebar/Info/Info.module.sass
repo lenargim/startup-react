@@ -1,0 +1,38 @@
+@import "../../../../../assets/commonStyles/general"
+
+.Info
+  margin-top: 10vh
+  @include between(768, 1024)
+    margin-top: 100px
+  @include max(767)
+    margin-top: 80px
+
+
+.title
+  font: 500 18px/24px $mainFont
+  padding-bottom: 20px
+  position: relative
+  @include max(1023)
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 10px
+  svg
+    position: absolute
+    width: 14px
+    height: 20px
+    left: -33px
+    top: 0
+    @include max(1023)
+      position: unset
+      flex-shrink: 0
+.text
+  color: #4A4A4A
+  @include between(1366, 1480)
+    line-height: 1.2
+  @include between(1024, 1365)
+    width: 170px
+  @include between(768, 1024)
+    width: calc(66.6% - 40px)
+  @include max(767)
+    width: 100%

@@ -1,0 +1,62 @@
+@import '../../../assets/commonStyles/general'
+
+.categories
+  margin-top: 175px
+  @include between(768, 1366)
+    margin-top: 140px
+  @include max(767)
+    margin-top: 100px
+  h2
+    padding-bottom: 105px
+    font-weight: 500
+    @include between(768, 1366)
+      padding-bottom: 60px
+    @include max(767)
+      padding-bottom: 30px
+.wrap
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  grid-gap: 60px 10%
+  @include between(768, 1366)
+    grid-template-columns: repeat(3, 1fr)
+    grid-gap: 60px 45px
+  @include max(767)
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 20px
+    position: relative
+    left: -20px
+    right: -20px
+    width: calc(100% + 40px)
+    overflow-x: auto
+    -ms-overflow-style: none
+    scrollbar-width: none
+    padding: 20px
+    &::-webkit-scrollbar
+      display: none
+.item
+  font: 500 18px/24px $mainFont
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  gap: 30px
+  white-space: nowrap
+
+  &:hover svg
+    fill: #33BBFF
+
+  @include max(767)
+    flex-shrink: 0
+    flex-direction: column
+    gap: 10px
+    font: 500 14px/24px $mainFont
+    background: #fff
+    padding: 16px 16px 12px
+    border-radius: 9px
+    box-shadow: 0 6px 10px rgba(15, 16, 24, 0.253333)
+
+  svg
+    fill: $blue
+    width: 50px
+    height: 50px

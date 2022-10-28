@@ -1,0 +1,41 @@
+@import "./../../../assets/commonStyles/general"
+
+.thankyou
+  text-align: center
+  h1
+    color: #1E96DC
+    padding-bottom: 11px
+  h2
+    padding-bottom: 47px
+    position: relative
+    &:after
+      content: ''
+      position: absolute
+      width: 274px
+      height: 3px
+      background: #1E96DC
+      left: 50%
+      transform: translateX(-50%)
+      bottom: 0
+  p
+    color: #4A4A4A
+    font: 400 16px/28px $mainFont
+    padding-top: 47px
+.wrap
+  max-width: 454px
+  margin: 200px auto
+.back
+  padding-top: 144px
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 16px
+  font: 400 16px/24px $mainFont
+  color: #272727
+  &:hover
+    svg
+      fill: $blue
+  svg
+    width: 36px
+    height: 21px
+    fill: #000

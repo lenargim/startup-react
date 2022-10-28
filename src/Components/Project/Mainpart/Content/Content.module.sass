@@ -1,0 +1,27 @@
+@import "../../../../assets/commonStyles/general"
+
+.content
+  width: 780px
+  margin: 0 auto
+  @include max(1365)
+    width: 100%
+  h2
+    padding-bottom: 40px
+    font-weight: 500
+    @include between(768, 1024)
+      padding-bottom: 30px
+    &:not(:first-child)
+      margin-top: 100px
+      @include between(768, 1024)
+        margin-top: 80px
+      @include max(767)
+        margin-top: 70px
+.text
+  color: #4A4A4A
+  p
+    font: 400 16px/28px $mainFont
+    &:not(:last-of-type)
+      padding-bottom: 1em
+  img, picture, video
+    width: 100%
+    margin: 60px 0

@@ -1,0 +1,430 @@
+.form
+  &-row
+    position: relative
+    &-select
+      display: flex
+    &-wrap
+      display: grid
+      grid-template-columns: 1fr
+      grid-gap: 40px
+    &.active
+      .form-counter
+        background: $blue
+        color: #fff
+    &.error
+      .form-input
+        border-color: $red
+      .form-counter
+        background-color: rgba(217,52,68, 1)
+        color: #fff
+      .form-description
+        display: none
+  &-input
+    border-radius: 4px
+    border: 1px solid rgba(206,212,218, 1)
+    background: $gray
+    padding: 20px 16px 18px
+    color: #4a4a4a
+    font-size: 16px
+    &:not(.focused):hover
+      box-shadow: 0 0 0 3px rgb(0 123 255 / 20%)
+    &:disabled
+      background-color: rgba(233,236,239, 1)
+      border: 1px solid rgba(206,212,218, 1)
+    &.focused
+      padding: 27px 16px 11px
+      & + .form-label
+        color: #aeaeae
+        font: 400 14px/16px $mainFont
+        top: 6px
+  &-label
+    position: absolute
+    color: rgba(74,74,74,1)
+    font: 400 16px/20px $mainFont
+    top: 20px
+    left: 16px
+    transition: all 0.2s ease
+  &-description
+    position: absolute
+    top: calc(100% + 10px)
+    color: #4A4A4A
+    font-size: 14px
+  &-error
+    color: $red
+    position: absolute
+    top: calc(100% + 10px)
+    @include max(767)
+      width: 225px
+  &-counter
+    position: absolute
+    left: calc(100% + 30px)
+    top: 20px
+    padding: 5px 12px
+    font-size: 16px
+    line-height: 20px
+    border-radius: 14px
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: rgba(216,216,216, 1)
+    transition-duration: 0s
+    @include between(768, 1024)
+      left: calc(100% + 20px)
+      padding: 5px 10px
+    @include max(767)
+      left: unset
+      right: 0
+      top: calc(100% + 10px)
+    span
+      transition-duration: 0s
+    &-photo
+      @include max(767)
+        top: unset
+        bottom: 100px
+.form-file
+  position: absolute
+  z-index: -1
+  opacity: 0
+  &-box
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 13px
+    padding: 30px 21px
+    border-radius: 4px
+    border: 1px dashed rgba(151,151,151, 1)
+    @include max(767)
+      flex-wrap: wrap
+      grid-gap: 20px
+    & > div:first-child
+      filter: none
+    & > div.uploaded, div.uploaded + div
+      filter: none
+  &-img
+    width: 116px
+    height: 65px
+    border-radius: 4px
+    position: relative
+    background: url("../images/image.svg") center center/cover no-repeat
+    order: 1
+    filter: opacity(0.35)
+    @include max(767)
+      width: unset
+      flex: 0 1 calc(50% - 10px)
+    img
+      width: 100%
+      height: 100%
+      border-radius: 4px
+    &.uploaded
+      order: 0
+      .close
+        display: block
+  &-explain
+    margin-top: 26px
+    display: flex
+    align-items: flex-start
+    justify-content: space-between
+    gap: 1em
+    color: #4A4A4A
+    @include max(767)
+      flex-direction: column
+  &-desc
+    width: 275px
+    font: 400 16px/24px $mainFont
+    @include between(768, 1024)
+      font: 400 14px/22px $mainFont
+    @include max(767)
+      width: 220px
+  &-label
+    @include max(767)
+      width: 100%
+      button
+        width: 100%
+.form-radio
+  display: flex
+  align-items: flex-start
+  gap: 40px
+  @include max(767)
+    flex-direction: column
+    gap: 24px
+  &_border
+    border-bottom: 1px solid #000
+    padding-bottom: 20px
+    max-width: 550px
+  &-input
+    position: absolute
+    z-index: -1
+    opacity: 0
+    &:checked + .label
+      color: #000
+      &:before
+        border: 3px solid #07A0EC
+  &-label
+    font: 400 16px/20px $mainFont
+    color: #4A4A4A
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 16px
+    cursor: pointer
+    white-space: nowrap
+    @include max(767)
+      white-space: unset
+    &::before
+      content: ''
+      box-sizing: border-box
+      width: 13px
+      height: 13px
+      border-radius: 50%
+      background: #fff
+      border: 1px solid #DEE2E6
+      flex-shrink: 0
+  &-description
+    margin-top: 42px
+    max-width: 548px
+    font: 400 16px/1.5 $mainFont
+    p:not(:last-of-type)
+      padding-bottom: 1em
+.form-number
+  display: flex
+  align-items: center
+  gap: 40px
+  &-input
+    width: fit-content
+    @include max(767)
+      width: 200px
+  &-desc
+    color: #4A4A4A
+.form-days
+  @include max(767)
+    flex-direction: column
+    align-items: flex-start
+    gap: 10px
+    &-input
+      width: 100%
+.form-checkbox
+  &-input
+    position: absolute
+    z-index: -1
+    opacity: 0
+    &:checked + .label
+      &:before
+        background: $blue
+      &:after
+        background: #ffffff
+        opacity: 1
+        left: calc(100% + 60px)
+  &-label
+    position: relative
+    font: 400 16px/20px $mainFont
+    cursor: pointer
+    &::before, &::after
+      content: ''
+      position: absolute
+      transition: all 0.3s ease
+    &::before
+      width: 32px
+      height: 16px
+      border-radius: 45px
+      border: 1px solid rgba(0,0,0, 0.25)
+      left: calc(100% + 40px)
+      top: 3px
+    &:after
+      width: 10px
+      height: 10px
+      background: #000000
+      opacity: .25
+      left: calc(100% + 43px)
+      border-radius: 50%
+      top: 7px
+.button-row
+  display: flex
+  justify-content: flex-end
+  align-items: center
+  gap: 40px
+  @include max(767)
+    justify-content: center
+    gap: 30px
+  .delete
+    display: flex
+    align-items: center
+    gap: 15px
+.form-award
+  width: 100%
+  &-input
+    position: absolute
+    z-index: -1
+    opacity: 0
+  &-label
+    text-align: center
+    color: $blue
+    border: 2px dashed $blue
+    padding: 42px
+    font: 500 22px/32px $mainFont
+    border-radius: 9px
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    width: calc(8/9*100%)
+    @include max(1365)
+      width: 100%
+    @include max(767)
+      padding: 22px
+    &:hover
+      border-color: rgba(15,134,194, 1)
+      color: rgba(15,134,194, 1)
+.form-check
+  &-input
+    position: absolute
+    z-index: -1
+    opacity: 0
+    &:checked + .label
+      &:before
+        background: $blue
+        border-color: $blue
+      &:after
+        display: block
+  &-label
+    position: relative
+    font: 400 16px/24px $mainFont
+    cursor: pointer
+    display: flex
+    align-items: flex-start
+    justify-content: flex-start
+    gap: 16px
+    &::before, &::after
+      content: ''
+      transition: all 0.3s ease
+    &::before
+      width: 13px
+      height: 13px
+      border-radius: 2px
+      border: 1px solid rgba(0,0,0, 0.25)
+      left: 0
+      top: 5px
+      position: relative
+      flex-shrink: 0
+    &:after
+      display: none
+      position: absolute
+      width: 9px
+      height: 7px
+      top: 9px
+      left: 3px
+      background: url("../images/icon-check.svg") center center/contain no-repeat
+.form-wallet
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  gap: 40px
+  &-input
+    position: absolute
+    z-index: -1
+    opacity: 0
+  &-label
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 24px
+    flex-shrink: 0
+    padding: 24px 38px
+    border-radius: 48px
+    border: 3px solid rgba(7,160,236, 1)
+    font: 500 18px/24px $mainFont
+    box-sizing: border-box
+    cursor: pointer
+    &::after
+      content: ''
+      flex-shrink: 0
+      width: 41px
+      height: 41px
+    &.extention:after
+      background: url("./../images/wallet/Wallet_Extension.svg") no-repeat
+    &.tonkeeper:after
+      background: url("./../images/wallet/Tonkeeper.svg") no-repeat
+    &.tonhub:after
+      background: url("./../images/wallet/Tonhub.svg") no-repeat
+
+.s-hidden
+  visibility: hidden
+  padding-right: 10px
+  position: absolute
+.form-row-select
+  &.error
+    div[class$="-Control"]
+      border-color: $red
+.select
+  cursor: pointer
+  display: inline-block
+  font: 400 16px/20px $mainFont
+  color: #4A4A4A
+  width: 100%
+  &-label
+    position: absolute
+    left: 16px
+    top: 20px
+    color: #4A4A4A
+    font: 400 16px/20px $mainFont
+
+.styledSelect
+  position: relative
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  border: 1px solid #CED4DA
+  padding: 27px 16px 11px
+  height: 58px
+  border-radius: 4px
+  font: 400 16px/20px $mainFont
+  z-index: 2
+  &.filled ~ .select-label
+    top: 6px
+    font: 400 14px/17px $mainFont
+    color: #AEAEAE
+
+
+.styledSelect:after
+  content: ""
+  width: 0
+  height: 0
+  position: absolute
+  top: calc(50% - 3px)
+  right: 16px
+  border: solid black
+  border-width: 0 1.5px 1.5px 0
+  display: inline-block
+  padding: 3px
+  transform: rotate(45deg)
+  transition: all 0.2s ease
+
+.styledSelect:active,
+.styledSelect.active
+  &:after
+    transform: rotate(-135deg)
+
+.options
+  display: none
+  position: absolute
+  top: 100%
+  right: 0
+  left: 0
+  z-index: 999
+  margin: 0 0
+  padding: 0 0
+  list-style: none
+  border: 1px solid #ccc
+  border-radius: 4px
+  border-top: none
+  background: #f8f8f8
+
+.options li
+  display: block
+  margin: 0 0
+  padding: 0 10px
+  width: 100%
+
+.options li:hover
+  background-color: #39f
+  color: white

@@ -1,0 +1,27 @@
+// CUSTOM VARIABLES
+$mainFont: 'Inter', sans-serif
+$black: #000
+$dark: #1F2838
+$gray: #f8f8f8
+$blue: rgba(7,160,236, 1)
+$red: #D93444
+
+// BREAKPOINTS
+@mixin max($breakpoint)
+  @media screen and (max-width: ($breakpoint) + 'px')
+    @content
+
+@mixin min($breakpoint)
+  @media screen and (min-width: $breakpoint + 'px')
+    @content
+
+@mixin between($min, $max)
+  @media screen and (min-width: $min + 'px') and (max-width: $max - 1 + 'px')
+    @content
+
+@mixin font($fname, $fstyle, $fweight, $furl)
+  @font-face
+    font-family: $fname
+    font-style: $fstyle
+    font-weight: $fweight
+    src: url($furl) format('woff2')

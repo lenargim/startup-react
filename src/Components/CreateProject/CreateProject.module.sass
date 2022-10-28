@@ -1,0 +1,35 @@
+@import "../../assets/commonStyles/general"
+
+.createProject
+  padding: 140px 0
+  @include max(767)
+    padding: 80px 0
+  h1, h2
+    font: 400 64px/1.375 $mainFont
+    padding-bottom: 80px
+    @include between(768, 1366)
+      font: 400 48px/65px $mainFont
+    @include max(767)
+      font: 400 32px/1.2 $mainFont
+      padding-bottom: 60px
+  h3
+    font: 500 22px/1.455 $mainFont
+    padding-bottom: 40px
+  h4
+    font: 500 18px/24px $mainFont
+    padding-bottom: 20px
+    @include between(1024, 1366)
+      font: 500 22px/1.455 $mainFont
+  &__main
+    grid-template-columns: 3fr 1fr
+    grid-gap: 150px 30px
+    display: none
+    @include between(1024, 1366)
+      grid-template-columns: 600px 1fr
+    @include between(768, 1024)
+      grid-template-columns: 1fr
+      grid-gap: 150px
+    @include max(767)
+      grid-template-columns: 1fr
+    &.active
+      display: grid

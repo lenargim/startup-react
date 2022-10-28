@@ -1,0 +1,24 @@
+@import "../../../assets/commonStyles/general"
+
+.navigation
+  display: flex
+  align-items: center
+  gap: 30px
+.arrow
+  width: 36px
+  height: 36px
+  background: #000
+  border-radius: 50%
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  @include min(1280)
+    &:hover
+      background: $blue
+  svg
+    fill: #fff
+    width: 18px
+    height: 18px
+.prev
+  transform: rotate(180deg)

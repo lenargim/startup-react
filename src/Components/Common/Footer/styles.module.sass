@@ -1,0 +1,122 @@
+@import "../../../assets/commonStyles/general"
+
+.footer
+  padding: 76px 0 56px
+  background: #fff
+  border-top: 0.5px solid rgba(151, 151, 151, 0.667287)
+
+.wrap
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  grid-gap: 30px
+  margin-bottom: 50px
+  @include between(768, 1024)
+    grid-template-columns: repeat(2, 1fr)
+    grid-gap: 80px 40px
+  @include max(767)
+    grid-template-columns: 1fr
+    gap: 60px
+
+.colTitle
+  color: rgba(10, 16, 22, 1)
+  font: 500 18px/26px $mainFont
+  letter-spacing: -0.56px
+
+.nav
+  width: 100%
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  grid-gap: 25px 35px
+  margin-top: 34px
+  @include max(1365)
+    grid-template-columns: repeat(2, 1fr)
+
+.link
+  color: rgba(55, 55, 55, 1)
+  white-space: nowrap
+
+.row
+  padding-top: 50px
+  border-top: 2px solid #858585
+  display: flex
+  align-items: center
+  justify-content: space-between
+  font: 400 14px/22px $mainFont
+  color: #4A4A4A
+
+  & > div
+    display: flex
+    align-items: center
+    gap: 16px
+
+    svg
+      width: 38px
+      height: 38px
+      flex-shrink: 0
+
+.copy, .dev
+  display: flex
+  align-items: center
+  gap: 16px
+
+  &::before
+    content: ''
+    width: 38px
+    height: 38px
+
+.right
+  @include min(1366)
+    max-width: 275px
+  @include min(1024)
+    margin-left: auto
+  @include between(1024, 1366)
+    max-width: 200px
+  @include between(768, 1024)
+    max-width: unset
+    grid-column: 1/-1
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-gap: 40px
+
+  .description
+    color: #4A4A4A
+    @include min(1024)
+      margin-top: 26px
+    @include max(767)
+      margin-top: 36px
+
+  .socials
+    display: flex
+    align-items: center
+    justify-content: space-between
+    @include max(767)
+      border-top: 1px solid #858585
+      padding-top: 50px
+
+    &Link
+      width: 40px
+      height: 40px
+      @include between(1024, 1366)
+        width: 30px
+        height: 30px
+      @include max(1023)
+        width: 47px
+        height: 47px
+
+      svg
+        transition: all 0.2s ease
+
+        path
+          fill: #36596A
+
+      &.instagram:hover svg path
+        fill: url(#inst)
+
+      &.telegram:hover path
+        fill: url(#tg)
+
+      &.twitter:hover path
+        fill: url(#twitter)
+
+      &.youtube:hover path
+        fill: #FF2500

@@ -1,0 +1,70 @@
+@import "../../../assets/commonStyles/general"
+
+.data
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  gap: 30px
+  color: #272727
+  margin-bottom: 40px
+  @include between(768, 1024)
+    gap: 40px
+    margin-bottom: 55px
+  @include max(767)
+    flex-wrap: wrap
+    gap: 70px 25px
+    align-items: flex-start
+.author
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  flex: 0 0 25%
+  @include between(768, 1024)
+    flex-basis: 36px
+  @include max(767)
+    order: 3
+  &Img
+    width: 36px
+    height: 36px
+    border-radius: 50%
+    @include min(1024)
+      margin-right: 21px
+  span
+    color: #4a4a4a
+    @include max(1023)
+      display: none
+  &Name
+    font: 400 16px/24px $mainFont
+    margin-left: 3px
+    @include max(1023)
+      display: none
+.tag, .location
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  svg
+    fill: #272727
+    width: 16px
+    height: 16px
+  @include max(767)
+    justify-content: flex-start
+    align-items: flex-start
+.tag
+  flex: 0 0 120px
+  display: flex
+  align-items: center
+  gap: 8px
+  @include max(767)
+    order: 1
+    width: calc(50% - 13px)
+.location
+  flex: 0 0 200px
+  @include max(767)
+    order: 2
+    width: calc(50% - 13px)
+    flex: unset
+.navigation
+  margin-left: auto
+  @include max(767)
+    order: 4

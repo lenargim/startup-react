@@ -1,0 +1,28 @@
+@import "../../../assets/commonStyles/general"
+
+.slider
+  margin-bottom: 60px
+  @include between(768, 1024)
+    margin-bottom: 90px
+  @include max(767)
+    position: relative
+    width: 100vw
+    left: -20px
+    padding: 0 8px
+    margin-bottom: 40px
+
+.slide
+  @include min(1024)
+    width: 66% !important
+
+.slideImg
+  display: block
+  aspect-ratio: 897/506
+  border-radius: 10px
+  transform-origin: left center
+  overflow: hidden
+  img
+    display: block
+    width: 100%
+    height: 100%
+    object-fit: cover

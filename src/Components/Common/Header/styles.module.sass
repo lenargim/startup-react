@@ -1,0 +1,85 @@
+@import "../../../assets/commonStyles/general"
+
+.header
+  border-bottom: 0.5px solid rgba(151,151,151, 0.66)
+.wrap
+    display: flex
+    align-items: center
+    justify-content: space-between
+    padding: 25px 0
+    gap: 30px
+    @include between(768, 1024)
+      gap: 75px
+.part
+    flex-shrink: 0
+    @include min(1024)
+      flex: 0 0 calc(33.3% - 20px)
+.logo
+  display: block
+  font-size: 1px
+  line-height: 1
+  svg
+    fill: #07a0ec
+    @include min(1024)
+      max-width: 206px
+      aspect-ratio: 206/46
+    @include max(1023)
+      width: 46px
+      aspect-ratio: 1/1
+.nav
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    gap: 45px
+    @include between(1024, 1366)
+      gap: 32px
+    @include between(768, 1024)
+      gap: 22px
+    @include max(767)
+      display: none
+.link
+    white-space: nowrap
+    font: 400 16px/25px $mainFont
+.rightside
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    gap: 60px
+    @include between(1024, 1366)
+      gap: 32px
+    @include max(1023)
+      gap: 40px
+.item
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 16px
+    border: 3px solid rgba(7,160,236, 1)
+    width: 46px
+    height: 46px
+    &:hover
+      background: #07A0EC
+      svg
+        fill: #fff
+    svg
+      width: 18px
+      height: 18px
+      fill: $blue
+    &-wrap
+      display: flex
+      align-items: center
+      justify-content: flex-end
+      gap: 40px
+.mobile
+    background: #383838
+    padding: 12px 0
+    &-nav
+      display: flex
+      align-items: center
+      justify-content: flex-start
+      gap: 22px
+    @include min(768)
+      display: none
+    &-link
+      color: #fff
+      font: 400 16px/24px $mainFont

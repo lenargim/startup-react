@@ -1,0 +1,10 @@
+@import "../../../assets/commonStyles/general"
+
+.mainpart
+  display: grid
+  grid-gap: 30px
+  grid-template-columns: 1fr 3fr
+  @include between(1024, 1366)
+    grid-template-columns: 1fr 2fr
+  @include max(1023)
+    display: block

@@ -1,0 +1,251 @@
+@import "../../../../assets/commonStyles/general"
+
+.award
+  width: 780px
+  margin: 0 auto
+  @include max(1365)
+    width: 100%
+
+  h2
+    padding-bottom: 40px
+    font-weight: 500
+    @include between(768, 1024)
+      padding-bottom: 30px
+
+    &:not(:first-child)
+      margin-top: 100px
+      @include between(768, 1024)
+        margin-top: 80px
+      @include max(767)
+        margin-top: 70px
+
+.form
+  display: flex
+  flex-direction: column
+  gap: 80px
+
+  .awardRadio
+    position: fixed
+
+    &:checked
+      & + .block
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25)
+        border: 1px solid rgba(128, 189, 255, 1)
+
+        &:before
+          border: 1px solid rgba(128, 189, 255, 1)
+          box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25)
+          background-color: rgba(248, 248, 248, 1)
+
+        &:after
+          content: ''
+          width: 24px
+          height: 24px
+          border-radius: 50%
+          background: #80BDFF
+          top: 28px
+          left: 28px
+          position: absolute
+
+      & + .custom
+        &:before
+          border: 11px solid rgba(7, 160, 236, 1)
+          box-shadow: none
+
+        &:after
+          content: none
+
+.block
+  position: relative
+  padding: 22px
+  display: grid
+  grid-template-columns: 36px 1fr
+  grid-gap: 60px
+  border-radius: 9px
+  border: 1px solid transparent
+  cursor: pointer
+  background: #fff
+
+  .wrap
+    height: fit-content
+
+  @include max(1365)
+    gap: 22px
+  @include max(767)
+    padding: 28px 20px 40px
+    grid-template-columns: 1fr
+    grid-gap: 0
+
+  &::before
+    content: ''
+    display: block
+    width: 36px
+    height: 36px
+    border-radius: 50%
+    border: 2px solid rgba(132, 132, 132, 1)
+    box-sizing: border-box
+    @include max(767)
+      position: absolute
+      top: 22px
+      left: 22px
+
+  h4
+    font: 500 18px/24px $mainFont
+    @include max(767)
+      padding-left: 58px
+
+  .desc
+    font: 400 14px/22px $mainFont
+    color: #4A4A4A
+
+    p:not(:last-child)
+      padding-bottom: 1em
+
+  &Wrap
+    margin-top: 40px
+    display: grid
+    grid-template-columns: 195px 1fr
+    grid-gap: 40px
+    margin-bottom: 60px
+    @include max(767)
+      grid-template-columns: 1fr
+
+  &Info
+    display: flex
+    flex-direction: column
+    gap: 45px
+
+  &Img
+    width: 100%
+    aspect-ratio: 195/118
+    border-radius: 4px
+
+  &Delivery
+    span
+      color: #4A4A4A
+      font: 400 14px/2 $mainFont
+
+    p
+      font: 400 16px/28px $mainFont
+  &Footer
+    padding-top: 30px
+    border-top: 1px solid #979797
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 1em
+
+  &Amount
+    display: flex
+    align-items: flex-end
+    justify-content: flex-start
+    gap: 20px
+    font: 400 32px/1 $mainFont
+    @include max(767)
+      font-size: 22px
+      align-items: center
+
+    svg
+      width: 32px
+      height: 32px
+      fill: $blue
+      @include max(767)
+        width: 23px
+        height: 23px
+
+  &Open
+    display: none
+    padding-bottom: 85px
+    @include max(767)
+      padding-bottom: 100px
+
+    .formRadio
+      padding-bottom: 20px
+      border-bottom: 1px solid #000
+
+    .delivery
+      padding-top: 40px
+      display: flex
+      flex-direction: column
+      gap: 40px
+      justify-content: flex-start
+      align-items: stretch
+
+    .pickup
+      display: none
+      padding-top: 40px
+
+      &Box
+        &:not(:last-child)
+          margin-bottom: 40px
+
+        &Title
+          font: 500 18px/24px $mainFont
+          padding-bottom: 18px
+
+        &Desc
+          color: #4A4A4A
+
+    .formRadioInput:checked + .label
+      font-weight: 500
+
+.custom
+  background: transparent
+  padding-bottom: 60px
+
+  h4
+    padding-bottom: 12px
+    @include max(767)
+      padding-left: 58px
+
+  p
+    @include max(767)
+      padding-left: 58px
+
+  &Row
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    margin-top: 60px
+    @include max(767)
+      flex-wrap: wrap
+      margin-top: 40px
+      gap: 45px 20px
+
+  &Label
+    svg
+      flex-shrink: 0
+      width: 23px
+      height: 23px
+      fill: $blue
+      @include max(767)
+        flex-shrink: 0
+
+  &Input
+    width: 100%
+    background: transparent
+    font: 500 32px/1 $mainFont
+
+    &Wrap
+      position: relative
+      width: 267px
+      margin: 0 40px 0 20px
+      @include between(1024, 1366)
+        width: 230px
+      @include between(768, 1024)
+        width: 300px
+      @include max(767)
+        width: calc(100% - 50px)
+        margin: 0
+
+      &::after
+        content: ''
+        height: 1px
+        position: absolute
+        left: 0
+        right: 0
+        bottom: -13px
+        background: #525252
+
+  .submit
+    width: 100%
