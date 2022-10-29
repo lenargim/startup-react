@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './ProjectForm.module.sass'
 import walletImg from './../../../assets/images/wallet.svg'
-import {TextInput} from "../../Common/Form/Form";
+import {WalletInput} from "../../Common/Form/Form";
 import {Field, useField} from "formik";
 
 const Wallet = () => {
@@ -20,7 +20,7 @@ const Wallet = () => {
           <label htmlFor="fundraising_ton_address">
             <img src={walletImg} className={s.walletImg}/>
           </label>
-          <TextInput
+          <WalletInput
             name="fundraising_ton_address"
             label="Номер кошелька"
             className={[s.formRow].join(' ')}

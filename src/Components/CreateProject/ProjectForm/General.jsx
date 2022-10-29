@@ -1,5 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {NumberInput, RadioInput, SelectInput, TextAreaInput, TextInput} from "../../Common/Form/Form";
+import {
+  NumberInput,
+  RadioInputBoolean,
+  SelectInput,
+  TextAreaInput,
+  TextInput
+} from "../../Common/Form/Form";
 import s from './ProjectForm.module.sass'
 import {readFileAsUrl} from "../../../handlers/fileReader";
 import {useField} from "formik";
@@ -38,6 +44,7 @@ const General = ({setFieldValue, getFieldProps}) => {
 
   const [ , meta_img] = useField('cover_images_base64');
   const error = meta_img.error;
+  const touched = meta_img.touched;
 
 
   return (
@@ -77,7 +84,7 @@ const General = ({setFieldValue, getFieldProps}) => {
           </div>
         </div>
 
-        <div className={[s.formRow, error ? 'error' : '', 'form-row form-row-file'].join(' ')}>
+        <div className={[s.formRow, error && touched ? 'error' : '', 'form-row form-row-file'].join(' ')}>
           <input type="file" multiple
                  accept=".png, .jpg, .jpeg"
                  className="form-file"
@@ -120,7 +127,7 @@ const General = ({setFieldValue, getFieldProps}) => {
             <span className="current">{getFieldProps('cover_images_base64').value.length}</span>/<span
             className="max">4</span>
           </div>
-          {error ? <div className="form-error">{error}</div> : ''}
+          {error && touched ? <div className="form-error">{error}</div> : ''}
         </div>
       </div>
       <div className={[s.category, s.formBlock].join(' ')}>
@@ -137,11 +144,11 @@ const General = ({setFieldValue, getFieldProps}) => {
           <h3>Локация</h3>
         </div>
         <div className="form-radio">
-          <RadioInput name="is_project_global" value="true" label="Мой проект глобальный"/>
-          <RadioInput name="is_project_global" value="false" label="Мой проект в конкретном городе/регионе/стране"/>
+          <RadioInputBoolean name="is_project_global" value={true} label="Мой проект глобальный"/>
+          <RadioInputBoolean name="is_project_global" value={false} label="Мой проект в конкретном городе/регионе/стране"/>
         </div>
         {
-          getFieldProps('is_project_global').value === 'true'
+          getFieldProps('is_project_global').value
             ? <>
               <div className="form-radio-description">
                 <p>Глобальный проект — это проект реализация и деятельность которого доступна в любой точке мира, это
@@ -159,12 +166,12 @@ const General = ({setFieldValue, getFieldProps}) => {
           <h3>Тип сбора средств</h3>
         </div>
         <div className="form-radio form-radio_border">
-          <RadioInput name="is_fundraising_limited" context="type" value="true" label="Всё и даже больше"/>
-          <RadioInput name="is_fundraising_limited" context="type" value="false" label="Всё или ничего"/>
+          <RadioInputBoolean name="is_fundraising_limited" context="type" value={true} label="Всё и даже больше"/>
+          <RadioInputBoolean name="is_fundraising_limited" context="type" value={false} label="Всё или ничего"/>
         </div>
 
         {
-          getFieldProps('is_fundraising_limited').value === 'true'
+          getFieldProps('is_fundraising_limited').value
             ? <div className="form-radio-description">
               <p>Проект может собрать больше указанной суммы так как пользователи смогут финансировать ваш проект до
                 истечения срока сбора, даже если вы уже собрали необходимую сумму.</p>
@@ -178,7 +185,7 @@ const General = ({setFieldValue, getFieldProps}) => {
       </div>
       <div className="form-row-wrap">
         {
-          getFieldProps('is_fundraising_limited').value === 'true'
+          getFieldProps('is_fundraising_limited').value
             ? <NumberInput name="fundraising_days_limit"
                            label="Дней сбора"
                            desc="максимум 60 дней"

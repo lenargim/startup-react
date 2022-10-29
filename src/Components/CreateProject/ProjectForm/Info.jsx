@@ -10,7 +10,6 @@ const Info = () => {
   const log = (val) => {
     helpers.setTouched(true)
     helpers.setValue(val)
-    console.log(field.value)
   };
 
   return (
@@ -61,7 +60,6 @@ const Info = () => {
                       }
                       const reader = new FileReader();
                       reader.onload = function () {
-                        //console.log(image)
                         const id = "blobid" + new Date().getTime();
                         const blobCache = editorRef.current.editorUpload.blobCache;
                         const base64 = reader.result.split(",")[1];

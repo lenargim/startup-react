@@ -152,7 +152,7 @@ export const SelectInput = ({name, className = '', options = []}) => {
     }
   }
   return (
-    <div className={['form-row form-row-select', meta.error && 'error', className].join(' ')}>
+    <div className={['form-row form-row-select', meta.error && meta.touched && 'error', className].join(' ')}>
       <Select id={name}
               options={pluginOptions}
               placeholder={'Категория'}
@@ -166,7 +166,7 @@ export const SelectInput = ({name, className = '', options = []}) => {
               }}
       />
       {/*<ErrorMessage name={name} component="div" className="form-error form-error-empty"/>*/}
-      {meta.error ? <div className="form-error">{meta.error}</div> : ''}
+      {meta.error && meta.touched ? <div className="form-error">{meta.error}</div> : ''}
     </div>
   );
 };
@@ -198,13 +198,18 @@ export const NumberInput = ({
   );
 };
 
-export const RadioInput = ({name, value, label}) => {
+export const RadioInputBoolean = ({name, value, label}) => {
+
+  const [field, , helpers] = useField(name)
   return (
     <div className={['form-radio-item'].join(' ')}>
       <Field type="radio"
              name={name}
-             value={value}
-             className="form-radio-input"
+             value={value || ''}
+             onChange={function () {
+               helpers.setValue(value)
+             }}
+             className={["form-radio-input", field.value === value ? 'active' : ''].join(' ')}
              id={`${name}_${value}`}
       />
       <label htmlFor={`${name}_${value}`} className="label form-radio-label">{label}</label>
@@ -238,54 +243,33 @@ export const CheckInput = ({name, label, disabled = false}) => {
   );
 };
 
+export const WalletInput = ({
+                            className = '',
+                            name,
+                            label,
 
-// export const TextEditorInput = ({name}) => {
-//   const [field, meta, helpers] = useField({name});
-//
-//   const {value} = field;
-//   const {touched, error} = meta;
-//   const {setValue, setTouched} = helpers;
-//
-//   const modules = {
-//     toolbar: [
-//       [{'header': [1, 2, false]}],
-//       ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-//       [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
-//       ['link', 'image'],
-//       ['clean']
-//     ],
-//   };
-//   const formats = [
-//     'header',
-//     'bold', 'italic', 'underline', 'strike', 'blockquote',
-//     'list', 'bullet', 'indent',
-//     'link', 'image'
-//   ];
-//
-//   const handleChange = (value) => {
-//     setValue(value);
-//     setTouched(true, true)
-//   };
-//
-//
-//   return (
-//     <div>
-//       <ReactQuill
-//         modules={modules}
-//         formats={formats}
-//         theme="snow"
-//         defaultValue={value}
-//         onChange={handleChange}
-//         onBlur={handleChange}
-//         style={{
-//           height: 400
-//         }}
-//       />
-//       {error && touched && (
-//         <div className="error">
-//           <ErrorMessage message={error} name={name}/>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
+                          }) => {
+  const [field, meta, helpers] = useField(name);
+  const [, , ton_helpers] = useField('authorization_ton_address');
+  const error = meta.error;
+  const touched = meta.touched;
+  const length = field.value ? field.value.length : 0
+
+
+  return (
+    <div className={['form-row', error && touched ? 'error' : '', className].join(' ')}>
+      <Field className={['form-input', length ? 'focused' : ''].join(' ')}
+             type="text"
+             name={name}
+             id={name}
+             value={field.value}
+             onChange={(e) => {
+               helpers.setValue(e.target.value);
+               ton_helpers.setValue(e.target.value);
+             }}
+      />
+      <label className="form-label" htmlFor={name}>{label}</label>
+      <ErrorMessage name={name} component="div" className="form-error"/>
+    </div>
+  );
+};
